@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card Animation</title>
+</head>
+
+<style>
+    *,::before,::after{
+        padding: 0;
+        margin: 0;
+        box-sizing: inherit;
+    }
+    html{
+        font-size: 62.5%;
+        box-sizing: border-box;
+    }
+    body{
+        height: 100vh;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        position: relative;
+    }
+    .container .card{
+        background-color: #1a4df4;
+        width: 23rem;
+        height: 6rem;
+        border-radius: 1.5rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-block: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all .4s ease;
+    }
+    .container .card__open{
+        width: 5rem;
+        height: 5rem;
+        background-color: #1a4df4;
+        position: absolute;
+        left: 50%;
+        bottom: -5rem;
+        transform: translateX(-50%);
+        border-bottom-right-radius: 5rem;
+        border-bottom-left-radius: 5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+    }
+    .container .card__open ion-icon{
+        color: white;
+        transition: .4s ease;
+    }
+    .card__open.active ~ .card{
+       height: 33rem;
+    }
+    .card__open.active ion-icon{
+        transform: rotate(180deg);
+    }
+    .container i{
+        position: absolute;
+        width: 9.1rem;
+        height: 3rem;
+        background-color: #1a4df4;
+    }
+    .container i:first-of-type{
+        left: 0;
+        bottom: -3rem;
+    }
+    .container i:first-of-type::before{
+        content: '';
+        position: absolute;
+        width: 9.1rem;
+        height: 3rem;
+        background-color: white;
+        border-top-right-radius: 3rem;
+    }
+    .container i:nth-of-type(2){
+        right: 0;
+        bottom: -3rem;
+    }
+    .container i:nth-of-type(2)::before{
+        content: '';
+        position: absolute;
+        width: 9.1rem;
+        height: 3rem;
+        background-color: white;
+        border-top-left-radius: 3rem;
+    }
+    .container .card h3{
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+    }
+    .container .card p{
+        font-size: 1.1rem;
+    }
+    .card .card__content img{
+        width: 15rem;
+        margin-block: 2rem;
+        display: block;
+        border: 4px solid white;
+    }
+    .card .card__content button{
+        display: block;
+        margin: auto;
+        border: none;
+        text-transform: uppercase;
+        background-color: #ffffff;
+        padding: .5rem 1.5rem;
+        border-radius: .4rem;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="card__open"><ion-icon name="chevron-down-outline"></ion-icon></div>
+        <i></i>
+        <i></i>
+        <article class="card">
+            <h3>someone famous</h3>
+            <p>Creative Designer</p>
+
+            <div class="card__content">
+                <img src="./pexels-daddy.jpg" alt="profile image">
+                <button>hire me</button>
+            </div>
+        </article>
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const toggleBtn = document.querySelector('.card__open');
+
+        toggleBtn.addEventListener('click', ()=>{
+            toggleBtn.classList.toggle('active');
+        })
+    </script>
+    
+</body>
+</html>
